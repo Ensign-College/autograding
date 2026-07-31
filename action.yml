@@ -1,0 +1,30 @@
+name: "ExpertFlow Autograding"
+description: >
+  Runs the assignment's autograding test config, writes structured results to
+  autograding-results.json, and updates the Autograding check run with the score.
+  Adapted from the archived github-education-resources/autograding action (MIT).
+author: "Ensign College"
+inputs:
+  grading-run-id:
+    description: ExpertFlow GradingRun id echoed into autograding-results.json for correlation.
+    required: false
+  sha:
+    description: Commit SHA being graded. Falls back to GITHUB_SHA.
+    required: false
+  config-path:
+    description: Path to the autograding test config, relative to the workspace.
+    required: false
+    default: .github/classroom/autograding.json
+  token:
+    description: >
+      GitHub token used to update the Autograding check run with the score.
+      Falls back to the GITHUB_TOKEN environment variable.
+    required: false
+outputs:
+  points:
+    description: Points earned over points available, e.g. "7/10".
+  results-path:
+    description: Absolute path to the generated autograding-results.json.
+runs:
+  using: node20
+  main: dist/index.js

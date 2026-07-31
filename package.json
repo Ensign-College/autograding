@@ -1,0 +1,24 @@
+{
+  "name": "@ensign-college/autograding",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ExpertFlow autograding GitHub Action, adapted from the archived github-education-resources/autograding action (MIT).",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "ncc build src/main.ts -o dist",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "tree-kill": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
