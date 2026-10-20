@@ -1,0 +1,28 @@
+---
+description: Development and documentation rules for the ExpertFlow autograding GitHub Action
+alwaysApply: true
+---
+
+# Autograding Action Agent Rule
+
+## Scope
+
+This repository is the ExpertFlow GitHub Action that runs assignment autograding
+tests and writes `autograding-results.json` for the grading pipeline. Prefer
+changing behavior here over forking logic into the ExpertFlow app or Terraform
+repos.
+
+## Development
+
+1. Run `npm ci` after dependency changes.
+2. Run `npm run typecheck` and `npm test` before finishing.
+3. Run `npm run build` and commit `dist/` when `src/` changes — the runner
+   executes the committed bundle.
+4. Keep the classroom test config schema compatible with existing templates
+   (`.github/classroom/autograding.json`).
+
+## Cross-repo docs
+
+When inputs, outputs, results schema, or `template-workflow/` change, update
+architecture docs in the ExpertFlow app (`docs/GradingPipeline.md`) and follow
+the `document-grading-architecture` skill.
