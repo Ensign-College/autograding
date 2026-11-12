@@ -1,5 +1,8 @@
 name: GitHub Classroom Workflow
-run-name: "Autograding ${{ inputs.grading_run_id || github.sha }}"
+# Dispatched runs must be titled exactly "Autograding <grading_run_id>": that is
+# how ExpertFlow matches a completion to its GradingRun. Push runs are never
+# graded, so they show the student's commit message instead.
+run-name: "${{ inputs.grading_run_id && format('Autograding {0}', inputs.grading_run_id) || github.event.head_commit.message || format('Autograding {0}', github.sha) }}"
 
 on:
   push:
